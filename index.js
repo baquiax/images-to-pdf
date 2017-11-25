@@ -4,13 +4,14 @@ const Hapi = require('hapi')
 const ImagesToPdf = require('./handlers/images-to-pdf')
 
 // Create a server with a host and port
-const server = new Hapi.Server({
+const server = new Hapi.Server()
+server.connection({
   port: 8000
 })
 
 // Add the route
 server.route({
-  method: 'POST',
+  method: 'GET',
   path: '/pdf',
   handler: ImagesToPdf.toPdf
 })
